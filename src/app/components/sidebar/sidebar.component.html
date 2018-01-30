@@ -1,0 +1,68 @@
+<aside id="sidebar" [ngClass]="{'sidebar-open': openSidebar}">
+  <div class="sidebar-container">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="logo">
+          <img src="../assets/images/organizer.png"> Органаизер
+        </div>
+
+      </div>
+    </div>
+    <nav class="menu">
+      <ul class="nav flex-column">
+        <li [ngClass]="{'open':isActive('nodes')}">
+          <a class="title" (click)="menuToggle('nodes')">
+            <i class="fa fa-building-o"></i>
+            Записи
+            <i class="fa fa-angle-down rotate-icon"></i>
+          </a>
+          <ul class="sub-menu" [@slideInOutTrigger]="menuToggleAnimated('nodes')">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/nodes']">
+                <i class="fa fa-building-o"></i>Все записи</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/nodes/create']">
+                <i class="fa fa-building-o"></i>Добавить записи</a>
+            </li>
+          </ul>
+        </li>
+        <li [ngClass]="{'open':isActive('categories')}">
+          <a class="title" (click)="menuToggle('categories')">
+            <i class="fa fa-building-o"></i>
+            Категории
+            <i class="fa fa-angle-down rotate-icon"></i>
+          </a>
+          <ul class="sub-menu" [@slideInOutTrigger]="menuToggleAnimated('categories')">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/categories']">
+                <i class="fa fa-building-o"></i>Все категории</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/categories/create']">
+                <i class="fa fa-building-o"></i>Добавить категории</a>
+            </li>
+          </ul>
+        </li>
+        <li [ngClass]="{'open':isActive('tags')}">
+          <a class="title" (click)="menuToggle('tags')">
+            <i class="fa fa-building-o"></i>
+            Метки
+            <i class="fa fa-angle-down rotate-icon"></i>
+          </a>
+          <ul class="sub-menu" [@slideInOutTrigger]="menuToggleAnimated('tags')">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/tags']">
+                <i class="fa fa-building-o"></i>Все Метки</a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a [routerLink]="['/tags/create']">
+                <i class="fa fa-building-o"></i>Добавить Метки</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</aside>

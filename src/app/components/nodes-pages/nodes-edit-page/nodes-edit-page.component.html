@@ -1,0 +1,80 @@
+<div id="nodes-edit">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title-block">
+          <h3 class="title pull-left">
+            <span *ngIf="!id">Добавить запись</span>
+            <span *ngIf="id">Редактировать запись</span>
+            <span class="sparkline bar"></span>
+          </h3>
+          <div *ngIf="id" routerLink="/nodes/create" class="add-new pull-right">
+            <button class="btn btn-outline-info">
+              Добавить новую
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <org-loader *ngIf="!isLoaded"></org-loader>
+    <div *ngIf="isLoaded">
+      <form [formGroup]="form" novalidate (ngSubmit)="onSave()">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="title">
+              <input type="text" [ngModel]="nodeToEdit.title" class="form-control" placeholder="Введите заголовок" formControlName="title"
+                name="title" required>
+            </div>
+            <div class="editor">
+              <org-tiny-editor [content]="nodeToEdit.description" formControlName="description" elementId="nodes-editor">
+              </org-tiny-editor>
+            </div>
+            <div class="save-edit-button">
+              <button type="submit" class="btn btn-outline-info">
+                Coхранить
+              </button>
+              <button type="button" class="btn btn-outline-danger" (click)="onCancel()">
+                Отменить
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                <div class="card categories-checkbox">
+                  <div class="card-title">
+                    Рубрики
+                  </div>
+                  <div class="card-body" FormArray="categories">
+                    <div class="form-check checkbox checkbox-info" *ngFor="let category of nodes.categories; let i = index">
+                      <input class="form-check-input" [checked]="checkboxSetting(category.id, 'categories')" type="checkbox" id="{{category.title}}"
+                        FormControlName="categories.title" [value]="category.id" (change)="onChangeCheckbox($event,category,'categories')">
+                      <label class="form-check-label" for="{{category.title}}">
+                        {{category.title}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                <div class="card tags-checkbox">
+                  <div class="card-title">
+                    Метки
+                  </div>
+                  <div class="card-body">
+                    <div class="form-check checkbox checkbox-info" *ngFor="let tag of nodes.tags">
+                      <input class="form-check-input" [checked]="checkboxSetting(tag.id, 'tags')" type="checkbox" [value]="tag.id" FormControlName="tags"
+                        id="{{tag.title}}" (change)="onChangeCheckbox($event,tag,'tags')">
+                      <label class="form-check-label" for="{{tag.title}}">
+                        {{tag.title}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

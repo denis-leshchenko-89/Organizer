@@ -1,0 +1,49 @@
+<div id="tags-edit">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title-block">
+          <h3 class="title pull-left">
+            <span *ngIf="!id">Добавить запись</span>
+            <span *ngIf="id">Редактировать запись</span>
+            <span class="sparkline bar"></span>
+          </h3>
+          <div *ngIf="id" routerLink="/tags/create" class="add-new pull-right">
+            <button class="btn btn-outline-info">
+              Добавить новую
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <org-loader *ngIf="!isLoaded"></org-loader>
+        <div *ngIf="isLoaded">
+          <form [formGroup]="form" novalidate (ngSubmit)="onSave()">
+            <div class="title">
+              <input type="text" [ngModel]="tags.title" class="form-control" placeholder="Введите заголовок" formControlName="title" name="title"
+                required>
+            </div>
+            <div class="key">
+              <input type="text" [ngModel]="tags.key" class="form-control" placeholder="Введите ключь" formControlName="key" name="title"
+                required>
+            </div>
+            <div class="description">
+              <textarea [ngModel]="tags.description" class="form-control" placeholder="Описание" formControlName="description">
+              </textarea>
+            </div>
+            <div class="save-edit-button">
+              <button type="submit" class="btn btn-outline-info">
+                Coхранить
+              </button>
+                <button type="button" class="btn btn-outline-danger" (click)="onCancel()">
+                Отменить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+  #tags-list {
+    .title-block {
+      display: inline-block;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #d7dde4;
+      width: 100%;
+      .title {
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+    }
+    .table {
+      tr> :first-child {
+        width: 40px;
+      }
+      tr> :last-child {
+        width: 248px;
+      }
+    }
+    .card {
+      min-width: 1200px;
+      .card-header {
+        .form-control {
+          width: auto;
+        }
+        padding: .75rem;
+        label {
+          margin: 0px 10px;
+          font-weight: 500;
+        }
+        .title {
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .search {
+          height: 32px;
+          line-height: 32px;
+          input {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }

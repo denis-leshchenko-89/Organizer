@@ -1,0 +1,14 @@
+<main id="main">
+  <!--HEADER-->
+  <org-header  (openSidebar)="onOpenSidebar($event)"></org-header>
+  <!--HEADER-->
+  <!--SIDEBAR-->
+  <org-sidebar [openSidebar]="openSidebar"></org-sidebar>
+  <!--SIDEBAR-->
+  <!--CONTENT-->
+  <article id="content">
+    <router-outlet></router-outlet>
+  </article>
+  <!--CONTENT-->
+  <div class="sidebar-overlay" [ngClass]="{'open': openSidebar}" (click)="onOpenSidebar()"></div>
+</main>
