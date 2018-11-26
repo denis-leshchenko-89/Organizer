@@ -10,7 +10,7 @@ https://github.com/denis-leshchenko-89/organizer.git
 
 npm install
 
-# #Для  запуска 
+## Для  запуска 
 
 npm run dev    
 
